@@ -251,7 +251,8 @@ object FontInstaller {
         val count = loadedProcessCount()
         step("当前有 $count 个进程加载了该字体（总耗时 ${System.currentTimeMillis() - t0} ms）")
         if (count == 0) {
-            step("⚠ 没有任何进程加载字体，请检查 SELinux 标签是否为 $SELINUX_LABEL")
+            // 文件写了但没人加载 ⇒ 基本就是 SELinux 标签不对，必须让用户看到
+            throw RootException("失败：没有进程加载字体，请点「修复标签」后重试")
         }
         log.append("完成。")
         return log.toString()

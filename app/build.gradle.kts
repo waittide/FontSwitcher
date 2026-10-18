@@ -11,8 +11,8 @@ android {
         applicationId = "io.github.waittide.fontswitcher"
         minSdk = 26
         targetSdk = 37
-        versionCode = 2
-        versionName = "1.1"
+        versionCode = 3
+        versionName = "1.2"
     }
 
     // 签名：优先读环境变量（CI），否则 null → 用 debug 签名
